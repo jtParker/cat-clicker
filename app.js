@@ -7,7 +7,10 @@ let Cat = function(name, src) {
   this.catImageElem = document.getElementById('cat-pic');
 };
 
+let selectedCat;
+
 Cat.prototype.selectCat = function() {
+  selectedCat = this;
   this.clickCounterElem.textContent = this.clicks;
   this.catNameElem.textContent = this.name;
   this.catImageElem.src = this.image;
@@ -29,7 +32,6 @@ document.onload = function() {
 };
 
 let init = cat1.selectCat();
-
 
 document.addEventListener('click', function(e) {
   let target = e.target;
@@ -55,7 +57,7 @@ document.addEventListener('click', function(e) {
   }
 
   if (target.matches('#cat-pic')) {
-    cat.clickCat();
+    selectedCat.clickCat();
   }
 
 
